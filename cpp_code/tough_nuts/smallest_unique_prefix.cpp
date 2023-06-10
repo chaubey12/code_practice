@@ -2,6 +2,7 @@
 #include <string>
 #include <unordered_set>
 #include <unordered_map>
+#include <vector>
 
 
 using namespace std;
@@ -53,7 +54,7 @@ string findSmallestUniquePrefix(const string& s, unordered_set<string>& dict){
 }
 
 int main(){
-    string dict[] = {"cat", "car", "cash", "dog"};
+    vector<string> dict = {"cat", "car", "cash", "dog"};
     string word = "card";
     unordered_set<string>dict_set;
     for(auto word : dict){
