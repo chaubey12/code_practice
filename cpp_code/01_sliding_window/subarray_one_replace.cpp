@@ -12,7 +12,7 @@ public:
             if(arr[windowEnd] == 1){
                 maxOneCount++;
             }
-            if(windowEnd - windowStart + 1 -maxOneCount > k){
+            if(windowEnd - windowStart + 1 - maxOneCount > k){
                 if(arr[windowStart] == 1){
                     maxOneCount--;
                 }
