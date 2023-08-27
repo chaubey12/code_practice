@@ -42,7 +42,7 @@ public:
 };
 
 int main(){
-    string str = "abbcabc";
+    string str = "abbcabcabc";
     string pattern = "abc";
     auto result = AllPermutations::find(str, pattern);
     for(auto e : result){
