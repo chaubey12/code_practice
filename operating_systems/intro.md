@@ -36,3 +36,7 @@ Running a program on Computer
 - To enable giving instructions, OS provides APIs.
 - Virtualization allows many programs to run (sharing CPU) and many programs to concurrenctly access their instructions and data(sharing memory), and many programs to access devices (sharing disks), the OS is known as resource manager.
 - CPU, memory and disk are resources, that are managed by operating systems.
+PERSISTENCE
+- Hardware is some kind of I/O (input/output) device.
+- Software that manages the disk is called file system
+- System calls are routed to File Systems.
