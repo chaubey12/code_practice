@@ -24,5 +24,12 @@ int main(){
     t1.join();
     t2.join();
     t3.join();
+
+    // t1.detach();
+    // t2.detach();
+    // t3.detach();
+
+
+    cout << "Program Finished" << endl;
     return 0;
 }
