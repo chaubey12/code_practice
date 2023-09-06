@@ -15,6 +15,6 @@ public:
     ~scoped_thread(){
         t.join();
     }
-    scoped_thread(scoped_thread&)= delete;
+    scoped_thread(scoped_thread&) = delete;
     scoped_thread& operator=(scoped_thread const &) = delete;
 };
