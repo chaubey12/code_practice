@@ -39,4 +39,8 @@ Running a program on Computer
 PERSISTENCE
 - Hardware is some kind of I/O (input/output) device.
 - Software that manages the disk is called file system
-- System calls are routed to File Systems.
+- System calls are routed to File Systems. Find the disk, tracking various structures the file system maintains.
+- Issuing I/O request to underlying device for read/write.
+- Low level device interface and transfer protocols
+- For performance, file systems delay and batch request into larger groups.
+- Write protocols, such as journaling, copy-on-write 

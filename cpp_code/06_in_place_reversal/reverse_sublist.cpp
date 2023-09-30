@@ -15,40 +15,29 @@ public:
 class LinkedList{
 public:
     static Node* reverseSublist(Node* head, int p, int q){
-        if(p == q){
+        if(p >= q){
             return head;
         }
-        if(p < 1 || q < 2){
-            return head;
+        Node* current = head;
+        Node* previous = nullptr;
+
+        int i = 0;
+        while((current != nullptr) && (i < p-1)){
+            
         }
-        Node* nodeForHead = head;
-        Node* nodeForTail = head;
-        Node* listHead = head;
-        int count = p;
-        if(count == 1){
-            listHead = nodeForHead;
-        }else{
-            while(count > 2){
-                nodeForHead = nodeForHead->next;
-                count--;
-            }
-            listHead = nodeForHead->next;
+    }
+
+    static Node* reverse(Node* head){
+        Node* curr = head;
+        Node* prev = nullptr;
+        Node* n = nullptr;
+        while(curr != nullptr){
+            n = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = n;
         }
-        
-        Node* listTail = listHead;
-        count = p;
-        while(count < q){
-            listTail = listTail->next;
-            count++;
-        } 
-        nodeForTail = listTail->next;
-        listTail->next = nullptr;
-        nodeForHead->next = nullptr;
-        Node* origHead = listHead;
-        listHead = reverse(listHead);
-        nodeForHead->next = listHead;
-        origHead->next = nodeForTail;
-        return head;
+        return prev;
     }
 
     static void printList(Node* head){
@@ -57,19 +46,6 @@ public:
             head = head->next;
         }
         cout << endl;
-    }
-private:
-    static Node* reverse(Node* head){
-        Node* curr = head;
-        Node* prev = nullptr;
-        Node* n = nullptr;
-        while(curr){
-            n = curr->next;
-            curr->next = prev;
-            prev = curr;
-            curr = n;
-        }
-        return prev;
     }
 };
 
@@ -80,6 +56,8 @@ int main(){
     head->next->next->next = new Node(4);
     head->next->next->next->next = new Node(5);
     head->next->next->next->next->next = new Node(6);
-    LinkedList::printList(LinkedList::reverseSublist(head, 1, 3));
+    LinkedList::printList(head);
+    Node* result = LinkedList::reverseSublist(head, 2, 4);
+    LinkedList::printList(result);
     return 0;
 }
