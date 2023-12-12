@@ -34,6 +34,11 @@ int main(){
 
     ContactList contact1 = ContactList{cl1};
     ContactList contact2 = ContactList{cl2};
+    vector<string> cl3 = {"madhup", "choubey"};
+    vector<string> cl4 = {"anwesha", "choubey"};
+
+    ContactList contact3 = ContactList{cl3};
+    ContactList contact4 = ContactList{cl4};
     if(contact1 == contact2){
         cout << "EQUAL LISTS"<<endl;
     }else{
