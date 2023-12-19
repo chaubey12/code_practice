@@ -12,8 +12,7 @@ struct BinaryTreeNode{
 };
 
 list<const unique_ptr<BinaryTreeNode<int>>*> CreateListOfLeaves(
-    const unique_ptr<BinaryTreeNode<int>>& tree
-){
+    const unique_ptr<BinaryTreeNode<int>>& tree){
     list<const unique_ptr<BinaryTreeNode<int>>*> leaves;
     if(tree != nullptr){
         if(tree->left == nullptr && tree->right == nullptr){
