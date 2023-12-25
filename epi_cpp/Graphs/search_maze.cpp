@@ -1,13 +1,14 @@
 #include <iostream>
 #include <vector>
 #include <array>
+#include <algorithm>
 
 using namespace std;
 typedef enum {WHITE, BLACK} Color;
 
 struct Coordinate{
     bool operator==(const Coordinate& that) const{
-        return that.x == x && that.y == x;
+        return x == that.x && y == that.y;
     }
     int x, y;
 };
@@ -17,15 +18,20 @@ bool IsFeasible(const Coordinate& cur, const vector<vector<Color>>& maze){
 }
 
 
-bool SearchMazeHelper(const Coordinate& cur, const Coordinate& dest, vector<vector<Color>>* maze, vector<Coordinate>* path){
-    if(cur == dest){
+bool SearchMazeHelper(const Coordinate& cur, const Coordinate& e, vector<vector<Color>>* maze, vector<Coordinate>* path){
+    if(cur == e){
         return true;
     }
     const array<array<int, 2>, 4> kShift = {{{0, 1}, {0, -1}, {1, 0}, {-1, 0}}};
     for(const array<int, 2>& s : kShift){
         Coordinate next{cur.x + s[0], cur.y + s[1]};
         if(IsFeasible(next, *maze)){
-            (*maze)[next.x][next.x] = BLACK;
+            (*maze)[next.x][next.y] = BLACK;
+            path->emplace_back(next);
+            if(SearchMazeHelper(next, e, maze, path)){
+                return true;
+            }
+            path->pop_back();
         }
     }
     return false;
@@ -54,11 +60,16 @@ int main(){
                 {BLACK, WHITE, BLACK, WHITE, BLACK, WHITE, BLACK, WHITE, WHITE, WHITE},
                 {BLACK, WHITE, BLACK, BLACK, WHITE, WHITE, WHITE, BLACK, BLACK, BLACK},
                 {WHITE, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE, BLACK, BLACK, WHITE}};
-    Coordinate start = {maze.size() - 1, 0};
-    Coordinate end = {0, maze.size() - 1};
+    Coordinate start = {static_cast<int>(maze.size() - 1), 0};
+    Coordinate end = {0, static_cast<int>(maze.size() - 1)};
     auto path = SearchMaze(maze, start, end);
-    for(auto elem : path){
-        cout << "{"<< elem.x<<", "<< elem.y << "}"<<endl;
+    for(auto elem = path.begin(); elem != path.end(); ++elem){
+        if(elem + 1 != path.end()){
+            cout << "{"<< elem->x<<", "<< elem->y << "} -> ";
+        }else{
+            cout << "{"<< elem->x<<", "<< elem->y << "}"<<endl;
+        }
     }
+    cout<<endl;
     return 0;
 }
