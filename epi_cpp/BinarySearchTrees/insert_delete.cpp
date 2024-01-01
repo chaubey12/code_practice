@@ -11,6 +11,13 @@ private:
         unique_ptr<TreeNode> left, right;
     };
     unique_ptr<TreeNode> root_ = nullptr;
+    void InorderHelper(unique_ptr<TreeNode>& root_){
+        if(root_){
+            InorderHelper(root_->left);
+            cout << root_->data << " ";
+            InorderHelper(root_->right);
+        }
+    }
 public:
     bool Insert(int key){
         if(root_ == nullptr){
@@ -60,9 +67,14 @@ public:
         }
         return true;
     }
+
+    void Inorder(){
+        InorderHelper(root_);
+    }
 };
 
 
 int main(){
+    
     return 0;
 }
