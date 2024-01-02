@@ -50,3 +50,15 @@ public:
                 : *iter->second.cbegin();
     }
 };
+
+int main(){
+    auto client = new ClientsCreditsInfo();
+    client->Insert("madhup", 100);
+    client->Insert("anwesha", 200);
+    client->Insert("arpita", 300);
+    client->AddAll(200);
+    cout << client->Max() << endl;
+    client->Remove("arpita");
+    cout << client->Max() << endl;
+    return 0;
+}
