@@ -5,10 +5,12 @@
 using namespace std;
 
 struct Interval{
+private:
     struct Endpoint{
         int val;
         bool isClosed;
     };
+public:
     Endpoint left, right;
     bool operator<(const Interval& i) const{
         if(left.val != i.left.val){
