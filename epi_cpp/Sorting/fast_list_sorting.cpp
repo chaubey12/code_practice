@@ -3,6 +3,7 @@
 #include <memory>
 
 using namespace std;
+
 template <typename T>
 struct ListNode{
     T data;
@@ -61,5 +62,22 @@ shared_ptr<ListNode<int>> StableSortList(const shared_ptr<ListNode<int>>& L){
 }
 
 int main(){
+    shared_ptr<ListNode<int>> head = make_shared<ListNode<int>>(ListNode<int>{1});
+    head->next = make_shared<ListNode<int>>(ListNode<int>{4});
+    head->next->next = make_shared<ListNode<int>>(ListNode<int>{3});
+    head->next->next->next = make_shared<ListNode<int>>(ListNode<int>{7});
+    head->next->next->next->next = make_shared<ListNode<int>>(ListNode<int>{5});
+    auto temp = head;
+    while(temp){
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+    temp = StableSortList(head);
+    while(temp){
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+    cout << endl;
     return 0;
 }
