@@ -20,7 +20,7 @@ vector<int> GeneratePrimes(int n){
 }
 
 int main(){
-    int n = 32;
+    int n = 100;
     auto result = GeneratePrimes(n);
     for(auto i : result){
         cout << i << " ";
