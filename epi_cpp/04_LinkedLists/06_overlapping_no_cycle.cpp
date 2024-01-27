@@ -9,7 +9,15 @@ struct ListNode{
     shared_ptr<ListNode<int>> next;
 };
 
-int Length(shared_ptr<ListNode<int>>& L){
+void PrintList(shared_ptr<ListNode<int>> node){
+    while(node){
+        cout << node->data << " ";
+        node = node->next;
+    }
+    cout << endl;
+}
+
+int Length(shared_ptr<ListNode<int>> L){
     int length = 0;
     while(L){
         ++length;
@@ -28,8 +36,7 @@ shared_ptr<ListNode<int>> OverlappingNoCycleLists(shared_ptr<ListNode<int>>& L1,
                                                   shared_ptr<ListNode<int>>& L2){
     int L1_len = Length(L1);
     int L2_len = Length(L2);
-    cout << L1->data << endl;
-    AdvanceListByK(abs(L1_len - L2_len), L1_len > L2_len ? &L1: &L2);
+    AdvanceListByK(abs(L1_len - L2_len), (L1_len > L2_len) ? &L1: &L2);
     while((L1 && L2) && (L1 != L2)){
         L1 = L1->next;
         L2 = L2->next;
@@ -45,7 +52,7 @@ int main(){
         temp1 = temp1->next;
     }
     shared_ptr<ListNode<int>> L2 = make_shared<ListNode<int>>(ListNode<int>{10, nullptr});
-    auto temp2 = L1;
+    auto temp2 = L2;
     for(int i=1; i <= 3; ++i){
         temp2->next = make_shared<ListNode<int>>(ListNode<int>{i, nullptr});
         temp2 = temp2->next;
