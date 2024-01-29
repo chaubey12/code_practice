@@ -9,6 +9,14 @@ struct ListNode{
     shared_ptr<ListNode<T>> next;
 };
 
+void PrintList(shared_ptr<ListNode<int>> L){
+    while(L){
+        cout << L->data << " ";
+        L = L->next;
+    }
+    cout << endl;
+}
+
 shared_ptr<ListNode<int>> AddTwoNumbers(shared_ptr<ListNode<int>> L1, shared_ptr<ListNode<int>> L2){
     shared_ptr<ListNode<int>> dummy_head(new ListNode<int>);
     auto place_iter = dummy_head;
@@ -23,7 +31,7 @@ shared_ptr<ListNode<int>> AddTwoNumbers(shared_ptr<ListNode<int>> L1, shared_ptr
             sum += L2->data;
             L2 = L2->next;
         }
-        place_iter->next = make_shared<ListNode<int>>(sum%10, nullptr);
+        place_iter->next = make_shared<ListNode<int>>(ListNode<int>{sum%10, nullptr});
         carry = sum/10;
         place_iter = place_iter->next;
     }
@@ -34,5 +42,14 @@ shared_ptr<ListNode<int>> AddTwoNumbers(shared_ptr<ListNode<int>> L1, shared_ptr
 }
 
 int main(){
+    shared_ptr<ListNode<int>> L1 = make_shared<ListNode<int>>(ListNode<int>{1, nullptr});
+    L1->next = make_shared<ListNode<int>>(ListNode<int>{1, nullptr});
+    L1->next->next = make_shared<ListNode<int>>(ListNode<int>{1, nullptr});
+    shared_ptr<ListNode<int>> L2 = make_shared<ListNode<int>>(ListNode<int>{3, nullptr});
+    L2->next =make_shared<ListNode<int>>(ListNode<int>{0, nullptr});
+    PrintList(L1);
+    PrintList(L2);
+    auto result = AddTwoNumbers(L1, L2);
+    PrintList(result);
     return 0;
 }
