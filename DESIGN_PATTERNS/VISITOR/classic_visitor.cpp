@@ -18,15 +18,15 @@ struct ExpressionPrinter : ExpressionVisitor{
     ostringstream oss;
     string str() const { return oss.str(); }
     void visit(DoubleExpression *de) override;
-    void visit(AdditionExpression *de) override;
-    void visit(SubtractionExpression *de) override;
+    void visit(AdditionExpression *ae) override;
+    void visit(SubtractionExpression *se) override;
 };
 
 struct ExpressionEvaluator : ExpressionVisitor{
     double result;
     void visit(DoubleExpression *de) override;
-    void visit(AdditionExpression *de) override;
-    void visit(SubtractionExpression *de) override;
+    void visit(AdditionExpression *ae) override;
+    void visit(SubtractionExpression *se) override;
 };
 
 struct Expression{
@@ -65,7 +65,7 @@ void ExpressionPrinter::visit(DoubleExpression *de){
 }
 
 void ExpressionPrinter::visit(AdditionExpression *ae){
-    bool need_braces = dynamic_cast<AdditionExpression*>(ae->right);
+    bool need_braces = dynamic_cast<AdditionExpression*>(ae);
     if(need_braces) oss << "(";
     ae->left->accept(this);
     oss << "+";
@@ -74,7 +74,7 @@ void ExpressionPrinter::visit(AdditionExpression *ae){
 }
 
 void ExpressionPrinter::visit(SubtractionExpression *se){
-    bool need_braces = dynamic_cast<SubtractionExpression*>(se->right);
+    bool need_braces = dynamic_cast<SubtractionExpression*>(se);
     if(need_braces) oss << "(";
     se->left->accept(this);
     oss << "-";
@@ -117,6 +117,6 @@ int main(int ax, char* av[]){
 
     ExpressionEvaluator evaluator;
     evaluator.visit(e);
-    cout << ep.str() << "= "<<evaluator.result<<endl;;
+    cout << ep.str() << "="<<evaluator.result<<endl;;
     return 0;
 }
