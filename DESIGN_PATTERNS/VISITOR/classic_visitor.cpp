@@ -65,7 +65,7 @@ void ExpressionPrinter::visit(DoubleExpression *de){
 }
 
 void ExpressionPrinter::visit(AdditionExpression *ae){
-    bool need_braces = dynamic_cast<AdditionExpression*>(ae->right);
+    bool need_braces = dynamic_cast<AdditionExpression*>(ae);
     if(need_braces) oss << "(";
     ae->left->accept(this);
     oss << "+";
@@ -74,7 +74,7 @@ void ExpressionPrinter::visit(AdditionExpression *ae){
 }
 
 void ExpressionPrinter::visit(SubtractionExpression *se){
-    bool need_braces = dynamic_cast<SubtractionExpression*>(se->right);
+    bool need_braces = dynamic_cast<SubtractionExpression*>(se);
     if(need_braces) oss << "(";
     se->left->accept(this);
     oss << "-";
@@ -98,7 +98,7 @@ void ExpressionEvaluator::visit(SubtractionExpression *se) {
     se->left->accept(this);
     auto temp = result;
     se->right->accept(this);
-    result -= temp;
+    result = temp - result;
 }
 
 
