@@ -1,0 +1,15 @@
+
+Command to spin docker container
+docker run -ti -h pff -v $(pwd):/root/live -p 9999:9999 ubuntu:latest /bin/bash
+
+docker run -ti -h pff -v $(pwd):/root/live -p 9999:9999 ubuntu:latest /bin/bash
+
+jupyter lab --allow-root --ip 0.0.0.0 --port 9999
+
+Connecting to existing container
+docker exec -it quizzical_nobel /bin/bash
+
+Second Approach:
+
+
+Hashed jupyter server pwd: /root/.jupyter/jupyter_server_config.json
