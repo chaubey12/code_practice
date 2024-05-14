@@ -13,4 +13,3 @@ if __name__ == '__main__':
     probabilities = [9./18, 6./18, 2./18, 1./18]
     rand = nonuniform_random_number_generation(values, probabilities)
     print(rand)
-
