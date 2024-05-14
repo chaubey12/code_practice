@@ -3,7 +3,7 @@ from random import randint
 
 def random_sampling(k: int, A: List[int])->None:
     for i in range(k):
-        r = randint(i, len(A))
+        r = randint(i, len(A) - 1)
         A[i], A[r] = A[r], A[i]
 
 if __name__ == '__main__':
@@ -12,6 +12,6 @@ if __name__ == '__main__':
         k = 3
         random_sampling(k, A)
         result = A[:k]
-        print(*result, end=" ")
+        print(*result, end="\n")
 
 
