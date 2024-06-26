@@ -5,7 +5,7 @@ using namespace std;
 
 int FindKthInTwoSortedArrays(const vector<int>& A, const vector<int>& B, int k){
     int b = max(0, static_cast<int>(k - B.size()));
-    int t = max(static_cast<int>(A.size()), k);
+    int t = min(static_cast<int>(A.size()), k);
     while(b < t){
         int x = b + ((t - b)/2);
         int A_x_1 = (x <= 0 ? numeric_limits<int>::min() : A[x-1]);
