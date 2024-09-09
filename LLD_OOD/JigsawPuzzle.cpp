@@ -1,6 +1,6 @@
 #include <iostream>
+#include <array>
 #include <vector>
-#include <memory>
 
 using namespace std;
 
@@ -11,27 +11,26 @@ enum Edge{
 };
 
 class Side{
-private: 
+private:
     Edge edge;
 };
 
 class Piece{
 private:
-    Side sides[4];
+    array<Side, 4> sides;
 public:
-    bool checkCorner(){}
+    bool checkCorder(){}
     bool checkEdge(){}
     bool checkMiddle(){}
 };
 
 class Puzzle{
 private:
-    static Puzzle *puzzle;
+    static Puzzle* puzzle;
     vector<vector<Piece>> board;
     vector<Piece> free;
 public:
-    void insertPiece(Piece piece, int row, int column) {}
-    static Puzzle *getInstance(){
+    static Puzzle* getInstance(){
         if(puzzle == nullptr){
             puzzle = new Puzzle();
         }
@@ -39,8 +38,7 @@ public:
     }
 };
 
-class PuzzleSolverf{
+class PuzzleSolver{
 public:
     Puzzle matchPieces(Puzzle board){}
 };
-
