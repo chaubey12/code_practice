@@ -27,7 +27,7 @@ vector<unique_ptr<BinaryTreeNode<int>>> GenerateAllBinaryTrees(int num_nodes){
         for(auto& left : left_subtrees){
             for(auto& right : right_subtrees){
                 result.emplace_back(make_unique<BinaryTreeNode<int>>(
-                    BinaryTreeNode<int>{0, }
+                    BinaryTreeNode<int>{0, Clone(left), Clone(right)}
                 ));           
             }
         }
