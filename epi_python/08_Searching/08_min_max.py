@@ -21,4 +21,5 @@ def find_min_max(A: List[int]) -> MinMax:
     return global_min_max
 
 if __name__=='__main__':
-    pass
+    minmax = find_min_max([3, 2, 5, 1, 4])
+    print(minmax.smallest, minmax.largest)
