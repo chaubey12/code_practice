@@ -1,0 +1,21 @@
+#include <iostream>
+#include <vector>
+#include <iomanip>
+
+using namespace std;
+
+int FinKnapsack(int capacity, vector<int>& weights, vector<int>& values, int n){
+    vector<vector<int>> dp(n+1, vector<int>(capacity + 1, 0));
+    for(int i=0; i < dp.size(); ++i){
+        for(int j=0; j < dp[i].size(); ++j){
+            if(i == 0 || j == 0){
+                dp[i][j] = 0;
+            }else if(weights[i-1] <= j){
+                dp[i][j] = max(values[i-1] + dp[i-1][j - weights[i-1]], dp[i-1][j]);
+            }else{
+                dp[i][j] = dp[i-1][j];
+            }
+        }
+    }
+    dp[n][capacity];
+}
